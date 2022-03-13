@@ -1,19 +1,17 @@
 import { InView } from 'react-intersection-observer';
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 
 export const Messages = () => {
     const [ isLoaded, setIsLoaded ] = useState(false);
     const [ nextToken, setNextToken ] = useState();
     const [ messages, setMessages ] = useState([]);
     
-    const messagesRef = useRef();
-
     const getMessages = (pageToken) => {
         fetch(`https://message-list.appspot.com/messages?limit=20&pageToken=${pageToken}`)
-        .then(response => response.json())
-        .then(data => parseData(data))
-        .then(() => setIsLoaded(true))
+            .then(response => response.json())
+            .then(data => parseData(data))
+            .then(() => setIsLoaded(true))
     }
 
     const parseData = (data) => {
@@ -30,10 +28,10 @@ export const Messages = () => {
             <h1>This is the messages component in the body section</h1>
             <ul>
                 {isLoaded && messages.map((message, index) => (
-                    (index == messages.length) ?
+                    (index != messages.length - 1) ?
                         <li key={index}>{message.content}</li>
                     :
-                        <InView onChange={() => getMessages(nextToken)}>
+                        <InView onChange={(inView) => inView && getMessages(inView, nextToken) }>
                             <li key={index} className="poo">{message.content}</li>
                         </InView>
                 ))}
