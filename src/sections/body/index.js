@@ -1,8 +1,8 @@
-import { Messages } from '../../components'
+import { Feed } from '../../components'
 
 const Body = () => {
     return (
-        <Messages />
+        <Feed />
     )
 }
 
