@@ -1,0 +1,1 @@
+export const messages_api = "https://message-list.appspot.com/";

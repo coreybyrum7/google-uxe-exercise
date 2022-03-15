@@ -1,15 +1,16 @@
 import './index.scss';
+import { messages_api } from '../../../data';
 import { Message } from '../../../components';
 import { InView } from 'react-intersection-observer';
 import { useEffect, useState } from 'react';
 
 export const Feed = () => {
     const [ isFetching, setIsFetching ] = useState(false);
-    const [ nextToken, setNextToken ] = useState();
+    const [ token, setToken ] = useState('');
     const [ feed, setFeed ] = useState([]);
     
     const loadMore = (pageToken) => {
-        fetch(`https://message-list.appspot.com/messages?limit=20&pageToken=${pageToken}`)
+        fetch(`${messages_api}/messages?limit=20&pageToken=${pageToken}`)
             .then(response => response.json())
             .then(data => {
                 parseData(data)
@@ -21,7 +22,7 @@ export const Feed = () => {
     }
 
     const parseData = (data) => {
-        setNextToken(data.pageToken)
+        setToken(data.pageToken)
         setFeed(feed.concat(data.messages))
     }
 
@@ -31,23 +32,24 @@ export const Feed = () => {
     }, []);
 
     return (
-        <main className="feed">
+        <div className="feed">
             {!isFetching && feed.map((feedUnit, index) => (
-                (index != feed.length - 1) ?
+                (index !== feed.length - 1) ?
                     <Message
-                        key={index}
                         message={feedUnit}
                         isLast={false}
                     />
                 :
-                    <InView onChange={(inView) => inView && loadMore(inView, nextToken) }>
+                    <InView 
+                        onChange={(inView) => inView && loadMore(token) }
+                        rootMargin="100px"
+                    >
                         <Message
-                            key={index}
                             message={feedUnit}
                             isLast={true}
                         />
                     </InView>
             ))}
-        </main>
+        </div>
     )
 }

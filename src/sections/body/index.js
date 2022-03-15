@@ -1,8 +1,11 @@
+import './index.scss';
 import { Feed } from '../../components'
 
 const Body = () => {
     return (
-        <Feed />
+        <main>
+            <Feed />
+        </main>
     )
 }
 
