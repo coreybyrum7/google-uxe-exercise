@@ -1,10 +1,11 @@
 .message {
-    background-color: #fff;
+    cursor: pointer;
     padding: 1.25rem;
+    text-align: left;
+    background-color: #fff;
+    border-radius: 2px;
     margin-bottom: 0.75rem;
     box-shadow: 0 2px 5px 0px rgba(0, 0, 0, .18), 0 1px 3px rgba(0, 0, 0, .18);
-    text-align: left;
-    border-radius: 2px;
 
     &__head {
         display: flex;
