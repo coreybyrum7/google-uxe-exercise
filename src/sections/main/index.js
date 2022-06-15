@@ -1,7 +1,7 @@
 import './index.scss';
 import { Feed } from '../../components'
 
-const Body = () => {
+const Main = () => {
     return (
         <main>
             <Feed />
@@ -9,4 +9,4 @@ const Body = () => {
     )
 }
 
-export default Body
+export default Main

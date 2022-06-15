@@ -1,12 +1,19 @@
+@import '../../styles/index.scss';
+
 header {
-    height: 4.25rem;
+    @extend .align__text--center;
+
+    height: space(7);
     position: fixed;
     width: 100%;
-    background-color: #750cd7;
     box-shadow: 0px 3px 8px 0px rgba(57, 63, 72, .6);
+    z-index: 2;
+
+    @include padding($y: 5);
+    @include color(background, background, tertiary, light);
 
     h2 {
-        color: #fff;
-        margin: 1.25rem auto;
+        @include color(color, text, primary, dark);
+        @include margin($y: 0);
     }
 }

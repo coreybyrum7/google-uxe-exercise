@@ -1,0 +1,87 @@
+:root {
+    --text-0: 0.571rem;
+    --text-1: 0.714rem;
+	--text-2: 1rem;
+    --text-3: 1.2rem;
+    --text-4: 1.44rem;
+    --text-5: 1.2rem;
+    --text-6: 1.44rem;
+    --text-7: 1.728rem;
+    --text-8: 2.074rem;
+    --text-9: 2.488rem;
+    --text-10: 2.986rem;
+    --text-11: 3.583rem;
+    --text-12: 4.280rem;
+    --text-13: 4.978rem;
+    --text-14: 5.483rem;
+    --text-15: 6.120rem;
+  
+    @include get-min-width-breakpoint(tablet) {
+		--text-1: 0.857rem;
+		--text-2: 1rem;
+		--text-3: 1.25rem;
+		--text-4: 1.563rem;
+		--text-5: 1.953rem;
+		--text-6: 2.441rem;
+		--text-7: 3.052rem;
+		--text-8: 3.815rem;
+		--text-9: 4.768rem;
+		--text-10: 5.618rem;
+		--text-11: 6.585rem;
+		--text-12: 7.289rem;
+		--text-13: 8.012rem;
+		--text-14: 9.483rem;
+		--text-15: 10.120rem;
+    }
+  
+    @include get-min-width-breakpoint(desktop-medium) {
+		--text-1: 0.875rem;
+		--text-2: 1rem;
+		--text-3: 1.25rem;
+		--text-4: 1.563rem;
+		--text-5: 1.953rem;
+		--text-6: 2.441rem;
+		--text-7: 3.052rem;
+		--text-8: 3.815rem;
+		--text-9: 4.768rem;
+		--text-10: 5.918rem;
+		--text-11: 7.185rem;
+		--text-12: 8.089rem;
+		--text-13: 8.910rem;
+		--text-14: 9.483rem;
+		--text-15: 10.120rem;
+    }
+  
+    @include get-min-width-breakpoint(desktop-large) {
+      	--text-0: 0.6rem;
+      	--text-1: 0.7rem;
+      	--text-2: 0.8rem;
+    }
+}
+  
+  
+@mixin font($size, $weight: null, $style: null) {
+    @include font-size($size);
+    
+    @if ($weight) {
+		font-weight: #{$weight};
+    }
+  
+    // @if ($style) {
+    //   @include font-style($style);
+    // }
+}
+  
+@mixin font-size($size) {
+    font-size: var(--text-#{$size});
+}
+  
+@mixin font-weight($weight) {
+    font-weight: $weight;
+}
+  
+// @mixin font-style($style) {
+//   @if ($style == 'italic') {
+	
+//   }
+// }

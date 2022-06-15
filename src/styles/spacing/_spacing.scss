@@ -1,0 +1,60 @@
+:root {
+    --space-1: 0.125rem;
+    --space-2: 0.25rem;
+    --space-3: 0.5rem;
+    --space-4: 0.75rem;
+    --space-5: 1rem;
+    --space-5-5: 1.25rem;
+    --space-6: 1.5rem;
+    --space-7: 2rem;
+    --space-8: 2.5rem;
+    --space-9: 3rem;
+    --space-10: 4rem;
+    --space-11: 5rem;
+    --space-12: 8rem;
+    --space-13: 16rem;
+}
+
+@function space($size) {
+    @if ($size == 0) {
+        @return 0;
+    } @else if ($size == auto) {
+        @return $size;
+    } @else if ($size < 0) {
+        @return calc(var(--space-#{$size * -1}) * -1);
+    }
+  
+    @return var(--space-#{$size});
+}
+  
+@mixin get_logical_space($type, $top, $right, $bottom, $left, $all, $x, $y) {
+    @if ($all) {
+        #{$type}: space($all);
+    } @else {
+        @if ($top) {
+            #{$type}-block-start: space($top);
+        }
+  
+        @if ($x) {
+            #{$type}-left: space($x);
+            #{$type}-right: space($x);
+        }
+  
+        @if ($y) {
+            #{$type}-top: space($y);
+            #{$type}-bottom: space($y);
+        }
+    
+        @if ($right) {
+            #{$type}-inline-end: space($right);
+        }
+    
+        @if ($bottom) {
+            #{$type}-block-end: space($bottom);
+        }
+    
+        @if ($left) {
+            #{$type}-inline-start: space($left);
+        }
+    }
+}

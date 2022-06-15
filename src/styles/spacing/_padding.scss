@@ -1,0 +1,3 @@
+@mixin padding($top: null, $right: null, $bottom: null, $left: null, $all: null, $x: null, $y: null) {
+    @include get_logical_space('padding', $top, $right, $bottom, $left, $all, $x, $y);
+}

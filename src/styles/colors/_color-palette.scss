@@ -1,0 +1,51 @@
+$colors: (
+    white: #ffffff,
+    off-white: #f4f4f4,
+    black: #000000,
+    purple: #750dd7,
+    grey: #808080,
+    red: #b40101,
+);
+
+$color-palette: (
+    text: (
+        primary: (
+            light: map-get($colors, black),
+            dark: map-get($colors, white)
+        ),
+        secondary: (
+            light: map-get($colors, grey),
+            dark: map-get($colors, grey)
+        ),
+        tertiary: (
+            light: map-get($colors, red),
+            dark: map-get($colors, red)
+        )
+    ),
+    background: (
+        primary: (
+            light: map-get($colors, white),
+            dark: map-get($colors, black)
+        ),
+        secondary: (
+            light: map-get($colors, off-white),
+            dark: map-get($colors, off-white)
+        ),
+        tertiary: (
+            light: map-get($colors, purple),
+            dark: map-get($colors, purple)
+        )
+    )
+);
+
+@function map-deep-get($map, $keys...) {
+    @each $key in $keys {
+        $map: map-get($map, $key);
+    }
+
+    @return $map;
+}
+
+@mixin color($property, $palette-path...) {
+    #{$property}: map-deep-get($color-palette, $palette-path...);
+}

@@ -1,6 +1,9 @@
+@import '../../../styles/index.scss';
+
 .feed {
     display: flex;
     flex-direction: column;
-    margin: 0 auto;
     width: 350px;
+
+    @include margin($y: 0, $x: auto);
 }

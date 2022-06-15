@@ -1,0 +1,9 @@
+// Create themed styles within a given component
+
+@mixin with-theme($theme, $component) {
+    @at-root {
+        .#{$component}--#{$theme} {
+            @content;
+        }
+    }
+}

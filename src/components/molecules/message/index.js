@@ -1,42 +1,51 @@
-import './index.scss';
+import React, { useState } from 'react';
 import Moment from 'react-moment';
 import ClampLines from 'react-clamp-lines';
+import { TinderCard } from '../tinder-card/index';
 import { messages_api } from '../../../data';
+import './index.scss';
 
-export const Message = ({ index, message, isLast} ) => {
-    const { content, updated, author } = message;
+export const Message = ({ message, isLast} ) => {
+    const { id, content, updated, author } = message;
     const { name, photoUrl } = author;
+    const [ isOutOfFrame, setIsOutOfFrame ] = useState(false);
 
     return (
-        <article
-            key={message.id}
-            className={isLast ? 'message--last' : 'message__container'}
+        <TinderCard
+            className={`${isOutOfFrame ? 'display--none' : ''}`}
+            key={id}
+            onCardLeftScreen={() => setIsOutOfFrame(true)}
         >
-            <div className="message">
-                <div className="message__head">
-                    <div className="message__avatar">
-                        <img 
-                            src={`${messages_api}/${photoUrl}`} 
-                            alt="image" 
-                            width="45" 
-                            height="45"
+            <article
+                key={message.id}
+                className={isLast ? 'message--last' : 'message__container'}
+            >
+                <div className="message">
+                    <div className="message__head">
+                        <div className="message__avatar">
+                            <img 
+                                src={`${messages_api}/${photoUrl}`} 
+                                alt={`Image of ${author}`}
+                                width="45" 
+                                height="45"
+                            />
+                        </div>
+                        <div className="message__info">
+                            <h4>{name}</h4>
+                            <p className="paragraph--subtext">
+                                <Moment fromNow>{updated}</Moment>
+                            </p>
+                        </div>
+                    </div>
+                    <div className="message__body">
+                        <ClampLines
+                            text={content}
+                            lines={4}
+                            buttons={false}
                         />
                     </div>
-                    <div className="message__info">
-                        <h4>{name}</h4>
-                        <p className="paragraph--subtext">
-                            <Moment fromNow>{updated}</Moment>
-                        </p>
-                    </div>
                 </div>
-                <div className="message__body">
-                    <ClampLines
-                        text={content}
-                        lines={4}
-                        buttons={false}
-                    />
-                </div>
-            </div>
-        </article>
+            </article>
+        </TinderCard>
     )
 }

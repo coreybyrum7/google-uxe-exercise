@@ -1,0 +1,149 @@
+$breakpoint-mobile-sm-min: 320px !default;
+$breakpoint-mobile-sm-max: 360px !default;
+$breakpoint-mobile-max: 767px !default;
+$breakpoint-tablet-min: 768px !default;
+$breakpoint-tablet-max: 1023px !default;
+$breakpoint-desktop-sm-min: 1024px !default;
+$breakpoint-desktop-sm-max: 1366px !default;
+$breakpoint-desktop-min: 1367px !default;
+$breakpoint-desktop-max: 1919px !default;
+$breakpoint-desktop-lg-min: 1920px !default;
+$breakpoint-desktop-lg-max: 2120px !default;
+$breakpoint-desktop-xl-min: 2121px !default;
+
+/**
+ * Mixin which will return just a breakpoint for a given screen size.
+ *
+ * $screenSize  Predefined screen size.
+ * @return      Breakpoint for the given screensize
+ */
+@mixin get-just-that-breakpoint($screenSize) {
+  @if $screenSize == mobile {
+    @media (max-width: $breakpoint-mobile-max) and (orientation: portrait) {
+      @content;
+    }
+  } @else if $screenSize == mobile-landscape {
+    @media (max-width: $breakpoint-mobile-max) and (orientation: landscape) {
+      @content;
+    }
+  } @else if $screenSize == tablet {
+    @media (min-width: $breakpoint-tablet-min) and (max-width: $breakpoint-tablet-max),
+      (orientation: landscape) and (max-width: $breakpoint-tablet-max) {
+      @content;
+    }
+  } @else if $screenSize == desktop {
+    @media (min-width: $breakpoint-desktop-sm-min) {
+      @content;
+    }
+  }
+}
+
+/**
+ * Mixin which will return a min-width breakpoint based on given screen size.
+ *
+ * $screenSize  Requested screen size.
+ * @return      Breakpoint for the given screensize
+ */
+@mixin get-min-width-breakpoint($screenSize) {
+  @if $screenSize == mobile {
+    @media (orientation: portrait) {
+      @content;
+    }
+  } @else if $screenSize == landscape {
+    @media (orientation: landscape) {
+      @content;
+    }
+  }
+  @if $screenSize == mobile-medium {
+    @media (min-width: $breakpoint-mobile-sm-max) {
+      @content;
+    }
+  } @else if $screenSize == tablet {
+    @media (min-width: $breakpoint-tablet-min) {
+      @content;
+    }
+  } @else if $screenSize == landscape-tablet {
+    @media (min-width: $breakpoint-tablet-min), (orientation: landscape) {
+      @content;
+    }
+  } @else if $screenSize == desktop {
+    @media (min-width: $breakpoint-desktop-sm-min) {
+      @content;
+    }
+  } @else if $screenSize == desktop-medium {
+    @media (min-width: $breakpoint-desktop-min) {
+      @content;
+    }
+  } @else if $screenSize == desktop-large {
+    @media (min-width: $breakpoint-desktop-lg-min) {
+      @content;
+    }
+  } @else if $screenSize == desktop-xlarge {
+    @media (min-width: $breakpoint-desktop-xl-min) {
+      @content;
+    }
+  }
+}
+
+/**
+ * Mixin which will return a max-width breakpoint based on given screen size.
+ *
+ * $screenSize  Requested screen size.
+ * @return      Breakpoint for the given screensize
+ */
+@mixin get-max-width-breakpoint($screenSize) {
+  @if $screenSize == mobile {
+    @media (max-width: $breakpoint-mobile-max) and (orientation: portrait) {
+      @content;
+    }
+  } @else if $screenSize == landscape {
+    @media (max-width: $breakpoint-mobile-max) and (orientation: landscape) {
+      @content;
+    }
+  } @else if $screenSize == tablet {
+    @media (max-width: $breakpoint-tablet-max) {
+      @content;
+    }
+  } @else if $screenSize == landscape-tablet {
+    @media (max-width: $breakpoint-tablet-max), (max-width: $breakpoint-mobile-max) and (orientation: landscape) {
+      @content;
+    }
+  } @else if $screenSize == desktop {
+    @media (max-width: $breakpoint-desktop-sm-max) {
+      @content;
+    }
+  } @else if $screenSize == desktop-medium {
+    @media (max-width: $breakpoint-desktop-max) {
+      @content;
+    }
+  } @else if $screenSize == desktop-large {
+    @content;
+  }
+}
+
+// could use these on a larger scale
+@mixin get-font-scale-breakpoint($screenSize) {
+  @if $screenSize == mobile {
+    @media (min-width: $breakpoint-mobile-sm-min) and (max-width: $breakpoint-mobile-max) {
+      @content;
+    }
+  }
+
+  @if $screenSize == tablet {
+    @media (min-width: $breakpoint-tablet-min) and (max-width: $breakpoint-desktop-sm-max) {
+      @content;
+    }
+  }
+
+  @if $screenSize == desktop {
+    @media (min-width: $breakpoint-desktop-sm-max) and (max-width: $breakpoint-desktop-max) {
+      @content;
+    }
+  }
+
+  @if $screenSize == desktop-large {
+    @media (min-width: $breakpoint-desktop-lg-min) {
+      @content;
+    }
+  }
+}

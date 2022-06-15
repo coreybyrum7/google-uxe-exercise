@@ -1,0 +1,6 @@
+@import '../../styles/index.scss';
+
+main {
+    @include color('background-color', 'background', 'secondary', 'light');
+    @include padding($top: 11);
+}

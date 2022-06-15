@@ -1,10 +1,9 @@
-import './index.scss';
+import React, { useEffect, useState } from 'react';
+import { InView } from 'react-intersection-observer';
 import { messages_api } from '../../../data';
 import { Message } from '../../../components';
-import { InView } from 'react-intersection-observer';
-import { useSprings, animated, interpolate } from 'react-spring'
-import { useGesture } from 'react-use-gesture';
-import { useEffect, useState } from 'react';
+import './index.scss';
+
 
 export const Feed = () => {
     const [ isFetched, setIsFetched ] = useState(false);
