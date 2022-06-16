@@ -12,7 +12,7 @@ export const Message = ({ message, isLast} ) => {
 
     return (
         <TinderCard
-            className={`${isOutOfFrame ? 'display--none' : ''}`}
+            className={`card swipeable ${isOutOfFrame ? 'display--none' : ''}`}
             key={id}
             onCardLeftScreen={() => setIsOutOfFrame(true)}
         >

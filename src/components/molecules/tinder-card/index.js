@@ -1,3 +1,5 @@
+// taken from npm module in order to customize //
+
 /* global WebKitCSSMatrix */
 
 const React = require('react')
