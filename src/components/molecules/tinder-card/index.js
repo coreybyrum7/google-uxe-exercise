@@ -58,7 +58,7 @@ const animateOut = async (element, speed, easeIn = false) => {
 
   element.style.transform = translateString + rotateString
 
-  await sleep(time * 200)
+  await sleep(time * 100)
 }
 
 const animateBack = async (element) => {

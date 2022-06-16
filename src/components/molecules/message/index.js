@@ -19,13 +19,15 @@ export const Message = ({ message, isLast} ) => {
             <article
                 key={message.id}
                 className={isLast ? 'message--last' : 'message__container'}
+                tabIndex={0}
             >
                 <div className="message">
                     <div className="message__head">
                         <div className="message__avatar">
                             <img 
                                 src={`${messages_api}/${photoUrl}`} 
-                                alt={`Image of ${author}`}
+                                alt={`${name} portrait`}
+                                title={`${name} portrait`}
                                 width="45" 
                                 height="45"
                             />
