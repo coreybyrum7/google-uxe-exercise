@@ -7,7 +7,7 @@
     border-radius: 2px;
     box-shadow: 0 2px 5px 0px rgba(0, 0, 0, .18), 0 1px 3px rgba(0, 0, 0, .18);
 
-    @include padding($all: 5);
+    @include padding($x: 5, $y: 5_5);
     @include margin($bottom: 4);
     @include color('background-color', 'background', 'primary', 'light');
 
@@ -16,7 +16,7 @@
         flex-direction: row;
         align-items: center;
 
-        @include margin($bottom: 5);
+        @include margin($bottom: 4);
     }
 
     &__info {        
@@ -25,7 +25,7 @@
         }
 
         .paragraph--subtext {
-            @include font('1', '500');
+            @include font('0', '500');
             @include margin($all: 0);
             @include color('color', 'text', 'secondary', 'light');
         }
@@ -41,6 +41,6 @@
     }
 
     &__body {
-        @include font-size('2');
+        @include font-size('1');
     }
 }

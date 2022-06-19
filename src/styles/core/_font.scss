@@ -1,6 +1,6 @@
 :root {
-    --text-0: 0.571rem;
-    --text-1: 0.714rem;
+    --text-0: 0.75rem;
+    --text-1: 0.875rem;
 	--text-2: 1rem;
     --text-3: 1.2rem;
     --text-4: 1.44rem;
@@ -17,7 +17,7 @@
     --text-15: 6.120rem;
   
     @include get-min-width-breakpoint(tablet) {
-		--text-1: 0.857rem;
+		--text-1: 0.875rem;
 		--text-2: 1rem;
 		--text-3: 1.25rem;
 		--text-4: 1.563rem;
