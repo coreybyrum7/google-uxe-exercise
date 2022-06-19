@@ -3,7 +3,7 @@
 .feed {
     display: flex;
     flex-direction: column;
-    width: 350px;
+    width: 340px;
 
     @include margin($y: 0, $x: auto);
 }
